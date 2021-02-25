@@ -1,6 +1,6 @@
 /**
- * 😺 Happy Cat
- * Fast, unopinionated, minimalist web framework for Cloudflare Worker.
+ * 😺 Worter
+ * An easy-way to build Cloudflare Workers.
  *
  * Logo:
  * https://emojipedia.org/grinning-cat/
@@ -463,13 +463,13 @@ export class Worter {
         // the stack one-by-one.
         if (route) {
             // Convert Request to HTTPRequest & Initialize new HTTPResponse
-            let request_params = {};
+            let requestParams = {};
             if (route.params) {
-                request_params = route.params;
+                requestParams = route.params;
             }
-            let incoming_request = new HTTPRequest(request, {
+            let incomingRequest = new HTTPRequest(request, {
                 app: this,
-                params: request_params,
+                params: requestParams,
                 query: searchParams,
             });
             let response = new HTTPResponse(this);
@@ -477,7 +477,7 @@ export class Worter {
             // Execute the handler on the stack one by one
             // TODO(pyk): Handle case where there is no response returned from the handlers
             for (const handler of route.handlers) {
-                const result = await handler(incoming_request, response);
+                const result = await handler(incomingRequest, response);
                 // If the handler function returns a response; then returns the
                 // response immediately
                 if (result instanceof HTTPResponse) {
@@ -486,7 +486,7 @@ export class Worter {
                 if (this.isRequestResponse(result)) {
                     // Otherwise call the next handler function in the stack
                     // with modified request and response
-                    incoming_request = result.request;
+                    incomingRequest = result.request;
                     response = result.response;
                 }
             }
