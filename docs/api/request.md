@@ -5,6 +5,7 @@
 -   [Overview](#overview)
 -   [Request properties](#request-properties)
     -   [request.app](#requestapp)
+    -   [request.params](#requestparams)
     -   [request.query](#requestquery)
 -   [Request methods](#request-methods)
     -   [request.formData](#requestformdata)
@@ -60,6 +61,43 @@ export function logEnv(
     return response;
 }
 ```
+
+[🠕 Go to table of content](#request-object)
+
+### request.params
+
+This property is an object containing properties mapped to the named route
+"parameters". For example, if you have the route `/cat/:id`, then the "id"
+property is available as `request.params.id`. This object defaults to `{}`.
+
+For example:
+
+```typescript
+// GET /cat/1
+console.dir(request.params.id);
+// => "id"
+```
+
+When you use a regular expression for the route definition, capture groups are
+provided in the array using `request.parameters[n]`, where `n` is the n-th
+capture group. This rule is applied to unnamed wild card matches with string
+routes such as `/assets/*`:
+
+```typescript
+// GET /assets/images/cat.webp`
+console.dir(request.params[0]);
+// => "images/cat.webp"
+```
+
+If you need to make changes to a `key` in `request.params`, use the `app.param`
+handler. Changes are applicable only to parameters already defined in the route
+path.
+
+Any changes made to the `request.params` object in a middleware or route handler
+will be reset.
+
+Worter automatically decodes the values in `request.params` (using
+`decodeURIComponent`).
 
 [🠕 Go to table of content](#request-object)
 
