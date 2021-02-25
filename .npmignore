@@ -1,0 +1,12 @@
+# tests directory
+tests/
+
+# docs
+docs/
+
+# VSCode
+.vscode/
+
+# All makrdown files
+*.md
+

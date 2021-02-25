@@ -34,9 +34,11 @@ cloudflare workers.
 
 ## 💃 Getting started
 
-Assuming you’ve already installed
-[Wrangler CLI](https://developers.cloudflare.com/workers/quickstart), then run
-the following command to start new Worter project:
+Add to existing project:
+
+    npm i worter --save-exact
+
+or start new Worter project:
 
     $ wrangler generate my-app https://github.com/pyk/worter-template
     $ cd my-app/
