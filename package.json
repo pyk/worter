@@ -1,6 +1,6 @@
 {
     "name": "worter",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Build serverless apps on Cloudflare Workers without hassle",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
