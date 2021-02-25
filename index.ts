@@ -40,7 +40,7 @@ export enum HTTPMethod {
  * HTTPRequest options
  */
 export interface HTTPRequestOptions {
-    app: HappyCat;
+    app: Worter;
     params?: Record<string, string>;
     query?: URLSearchParams;
 }
@@ -49,7 +49,7 @@ export interface HTTPRequestOptions {
  * Request object.
  */
 export class HTTPRequest extends Request {
-    public readonly app: HappyCat;
+    public readonly app: Worter;
     public query: URLSearchParams;
     public params: Record<string, string>;
 
@@ -90,10 +90,10 @@ export class HTTPRequest extends Request {
  * Response object.
  */
 export class HTTPResponse extends Response {
-    public readonly app: HappyCat;
+    public readonly app: Worter;
 
     constructor(
-        app: HappyCat,
+        app: Worter,
         body?:
             | string
             | Blob
@@ -399,7 +399,7 @@ export interface ApplicationSettings {
     strictRouting?: boolean;
 }
 
-export class HappyCat {
+export class Worter {
     public router: Router;
 
     constructor(settings?: ApplicationSettings) {
