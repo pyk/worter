@@ -1,0 +1,23 @@
+{
+    "name": "worter",
+    "version": "0.0.1",
+    "description": "Build serverless apps on Cloudflare Workers without hassle",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pyk/worter"
+    },
+    "keywords": [
+        "cloudflare",
+        "cloudflare-worker",
+        "serverless",
+        "worker"
+    ],
+    "author": "Bayu Aldi Yansyah",
+    "license": "MIT",
+    "devDependencies": {
+        "typescript": "4.2.2"
+    }
+}
