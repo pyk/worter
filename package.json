@@ -4,6 +4,7 @@
     "description": "Build serverless apps on Cloudflare Workers without hassle",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "prepublish": "tsc",
     "scripts": {},
     "repository": {
         "type": "git",
@@ -18,6 +19,10 @@
     "author": "Bayu Aldi Yansyah",
     "license": "MIT",
     "devDependencies": {
+        "@cloudflare/workers-types": "^2.1.0",
         "typescript": "4.2.2"
+    },
+    "dependencies": {
+        "path-to-regexp": "6.2.0"
     }
 }
