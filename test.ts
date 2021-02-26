@@ -23,9 +23,14 @@ let mochaLogOutput: string;
 console.log = (message: string, ...messages: Array<string>) => {
     if (message) {
         // check wether the first message is format or not
-        if (message.includes("%")) {
+        if (message.includes("%s") || message.includes("%d")) {
             // Add leading space to align the output
-            const line = vsprintf(message, messages) + "\n";
+            let line = "";
+            try {
+                line = vsprintf(message, messages) + "\n";
+            } catch (err) {
+                line = `message=${message} messages=${messages} error=${err}`;
+            }
             mochaLogOutput += line;
         }
     }
@@ -47,6 +52,7 @@ import { vsprintf } from "sprintf-js";
  * Import our test
  */
 import "./tests/request_object.test";
+import "./tests/request_params.test";
 import "./tests/response_object.test";
 import "./tests/application_object.test";
 import "./tests/app_get.test";

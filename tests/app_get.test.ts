@@ -108,6 +108,26 @@ describe('app.get("/cat/:id", handler)', () => {
         });
     });
 
+    describe("serve GET /cat/very%20cute request", () => {
+        it("should returns 200 OK with decoded value", async () => {
+            // Set up GET request on the correct path
+            const request = new Request("https://workers.dev/cat/very%20cute", {
+                method: "GET",
+            });
+            const response = await app.serve(request);
+
+            // It should returns 200OK with the specified body and header
+            expect(response.status).to.equal(200);
+            const jsonString = JSON.stringify(await response.json());
+            expect(jsonString).to.equal(
+                JSON.stringify({ message: "Meow very cute" })
+            );
+            expect(response.headers.get("Content-Type")).to.equal(
+                "application/json"
+            );
+        });
+    });
+
     describe("serve GET / request", () => {
         it("should returns 404 Not Found", async () => {
             // Set up get request on the path that does not exists

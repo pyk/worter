@@ -75,29 +75,28 @@ For example:
 ```typescript
 // GET /cat/1
 console.dir(request.params.id);
-// => "id"
+// => "1"
 ```
 
 When you use a regular expression for the route definition, capture groups are
-provided in the array using `request.parameters[n]`, where `n` is the n-th
-capture group. This rule is applied to unnamed wild card matches with string
-routes such as `/assets/*`:
+provided in the array using `request.params[n]`, where `n` is the n-th capture
+group. This rule is applied to unnamed wild card matches with string routes such
+as `/assets/*`:
 
 ```typescript
-// GET /assets/images/cat.webp`
+// GET /assets/images/cat.webp
 console.dir(request.params[0]);
 // => "images/cat.webp"
 ```
 
-If you need to make changes to a `key` in `request.params`, use the `app.param`
-handler. Changes are applicable only to parameters already defined in the route
-path.
-
-Any changes made to the `request.params` object in a middleware or route handler
-will be reset.
-
 Worter automatically decodes the values in `request.params` (using
 `decodeURIComponent`).
+
+```typescript
+// GET /cat/hello%20there
+console.dir(request.params.id);
+// => "hello there"
+```
 
 [🠕 Go to table of content](#request-object)
 

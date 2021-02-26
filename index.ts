@@ -51,7 +51,7 @@ export interface HTTPRequestOptions {
 export class HTTPRequest extends Request {
     public readonly app: Worter;
     public query: URLSearchParams;
-    public params: Record<string, string>;
+    public params: Record<string, string | undefined>;
 
     constructor(
         input: RequestInfo,
@@ -297,8 +297,16 @@ export class Router {
         handlers: Array<RouteHandlerFn>
     ) {
         // Convert wildcard to regexp
-        if (path === "*") {
-            path = "(.*)";
+        if (typeof path === "string") {
+            path = path.replace(/\*/g, "(.*)");
+        }
+        if (Array.isArray(path)) {
+            path = path.map((pathValue) => {
+                if (typeof pathValue == "string") {
+                    return pathValue.replace(/\*/g, "(.*)");
+                }
+                return pathValue;
+            });
         }
 
         // Convert path to regexp
@@ -317,6 +325,7 @@ export class Router {
 
     /**
      * Extract parameters from matched route.
+     * The extracted value is autmatically decoded using decodeURIComponent.
      *
      * @param matches List of match regexp.
      * @param keys List of key in the path.
@@ -331,7 +340,7 @@ export class Router {
             const prop = key.name;
             const val = matches[i];
             if (val !== undefined) {
-                params[prop] = val;
+                params[prop] = decodeURIComponent(val);
             }
         }
         return params;
