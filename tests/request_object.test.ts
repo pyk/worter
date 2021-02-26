@@ -1,4 +1,4 @@
-import { HappyCat, HTTPRequest } from "../index";
+import { Worter, HTTPRequest } from "../index";
 import { expect } from "chai";
 
 // Request built-in properties are defined in here:
@@ -6,7 +6,7 @@ import { expect } from "chai";
 
 describe("request.body", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.have.property("body");
     });
@@ -14,7 +14,7 @@ describe("request.body", () => {
 
 describe("request.bodyUsed", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.have.property("bodyUsed");
     });
@@ -22,7 +22,7 @@ describe("request.bodyUsed", () => {
 
 describe("request.cf", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.have.property("cf");
     });
@@ -30,7 +30,7 @@ describe("request.cf", () => {
 
 describe("request.headers", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.have.property("headers");
     });
@@ -38,7 +38,7 @@ describe("request.headers", () => {
 
 describe("request.method", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.have.property("method");
     });
@@ -46,7 +46,7 @@ describe("request.method", () => {
 
 describe("request.redirect", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.have.property("redirect");
     });
@@ -54,7 +54,7 @@ describe("request.redirect", () => {
 
 describe("request.url", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.have.property("url");
     });
@@ -62,7 +62,7 @@ describe("request.url", () => {
 
 describe("request.app", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.have.property("app");
     });
@@ -70,16 +70,16 @@ describe("request.app", () => {
 
 describe("request.query", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.have.property("query");
     });
 
     it("should be instance of URLSearchParams", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest(
             "https://workers.dev/search?q=cute+cat",
-            { app: app },
+            { app: app }
         );
         expect(request.query).to.be.an.instanceOf(URLSearchParams);
         expect(request.query.has("q")).to.equal(true);
@@ -89,11 +89,11 @@ describe("request.query", () => {
         expect(request.query.toString()).to.equal("q=cute+cat");
         request.query.append("orderBy", "playfulness");
         expect(request.query.toString()).to.equal(
-            "q=cute+cat&orderBy=playfulness",
+            "q=cute+cat&orderBy=playfulness"
         );
         request.query.set("orderBy", "activity level");
         expect(request.query.toString()).to.equal(
-            "q=cute+cat&orderBy=activity+level",
+            "q=cute+cat&orderBy=activity+level"
         );
         request.query.delete("orderBy");
         expect(request.query.toString()).to.equal("q=cute+cat");
@@ -102,7 +102,7 @@ describe("request.query", () => {
 
 describe("request.clone()", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.respondTo("clone");
     });
@@ -110,7 +110,7 @@ describe("request.clone()", () => {
 
 describe("request.arrayBuffer()", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.respondTo("arrayBuffer");
     });
@@ -118,7 +118,7 @@ describe("request.arrayBuffer()", () => {
 
 describe("request.formData()", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.respondTo("formData");
     });
@@ -126,7 +126,7 @@ describe("request.formData()", () => {
 
 describe("request.json()", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.respondTo("json");
     });
@@ -134,7 +134,7 @@ describe("request.json()", () => {
 
 describe("request.text()", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const request = new HTTPRequest("https://workers.dev/", { app: app });
         expect(request).to.respondTo("text");
     });

@@ -1,8 +1,8 @@
-import { HappyCat } from "../index";
+import { Worter } from "../index";
 import { expect } from "chai";
 
 describe('app.get("/", handler)', () => {
-    const app = new HappyCat();
+    const app = new Worter();
 
     app.get("/", (request, response) => {
         return response.json({ message: "Hello" });
@@ -21,7 +21,7 @@ describe('app.get("/", handler)', () => {
             const jsonString = JSON.stringify(await response.json());
             expect(jsonString).to.equal(JSON.stringify({ message: "Hello" }));
             expect(response.headers.get("Content-Type")).to.equal(
-                "application/json",
+                "application/json"
             );
         });
     });
@@ -54,7 +54,7 @@ describe('app.get("/", handler)', () => {
 });
 
 describe('app.get("/search", handler)', () => {
-    const app = new HappyCat();
+    const app = new Worter();
 
     app.get("/search", (request, response) => {
         let q = request.query.get("q");
@@ -74,7 +74,7 @@ describe('app.get("/search", handler)', () => {
             const jsonString = JSON.stringify(await response.json());
             expect(jsonString).to.equal(JSON.stringify({ query: "cat" }));
             expect(response.headers.get("Content-Type")).to.equal(
-                "application/json",
+                "application/json"
             );
         });
     });
@@ -82,7 +82,7 @@ describe('app.get("/search", handler)', () => {
 
 // Path string include parameters
 describe('app.get("/cat/:id", handler)', () => {
-    const app = new HappyCat();
+    const app = new Worter();
 
     app.get("/cat/:id", (request, response) => {
         return response.json({ message: `Meow ${request.params.id}` });
@@ -100,10 +100,10 @@ describe('app.get("/cat/:id", handler)', () => {
             expect(response.status).to.equal(200);
             const jsonString = JSON.stringify(await response.json());
             expect(jsonString).to.equal(
-                JSON.stringify({ message: "Meow 123" }),
+                JSON.stringify({ message: "Meow 123" })
             );
             expect(response.headers.get("Content-Type")).to.equal(
-                "application/json",
+                "application/json"
             );
         });
     });
@@ -137,7 +137,7 @@ describe('app.get("/cat/:id", handler)', () => {
 
 // An array of path string
 describe('app.get(["/cat/:id", "/kitten/:id"], handler)', () => {
-    const app = new HappyCat();
+    const app = new Worter();
 
     app.get(["/cat/:id", "/kitten/:id"], (request, response) => {
         return response.json({ message: `Meow ${request.params.id}` });
@@ -155,10 +155,10 @@ describe('app.get(["/cat/:id", "/kitten/:id"], handler)', () => {
             expect(response.status).to.equal(200);
             const jsonString = JSON.stringify(await response.json());
             expect(jsonString).to.equal(
-                JSON.stringify({ message: "Meow 123" }),
+                JSON.stringify({ message: "Meow 123" })
             );
             expect(response.headers.get("Content-Type")).to.equal(
-                "application/json",
+                "application/json"
             );
         });
     });
@@ -175,10 +175,10 @@ describe('app.get(["/cat/:id", "/kitten/:id"], handler)', () => {
             expect(response.status).to.equal(200);
             const jsonString = JSON.stringify(await response.json());
             expect(jsonString).to.equal(
-                JSON.stringify({ message: "Meow 123" }),
+                JSON.stringify({ message: "Meow 123" })
             );
             expect(response.headers.get("Content-Type")).to.equal(
-                "application/json",
+                "application/json"
             );
         });
     });
@@ -212,7 +212,7 @@ describe('app.get(["/cat/:id", "/kitten/:id"], handler)', () => {
 
 // Wildcard as path
 describe('app.get("*", handler)', () => {
-    const app = new HappyCat();
+    const app = new Worter();
 
     app.get("*", (request, response) => {
         return response.json({ message: "Hello" });
@@ -231,7 +231,7 @@ describe('app.get("*", handler)', () => {
             const jsonString = JSON.stringify(await response.json());
             expect(jsonString).to.equal(JSON.stringify({ message: "Hello" }));
             expect(response.headers.get("Content-Type")).to.equal(
-                "application/json",
+                "application/json"
             );
         });
     });
@@ -249,7 +249,7 @@ describe('app.get("*", handler)', () => {
             const jsonString = JSON.stringify(await response.json());
             expect(jsonString).to.equal(JSON.stringify({ message: "Hello" }));
             expect(response.headers.get("Content-Type")).to.equal(
-                "application/json",
+                "application/json"
             );
         });
     });
@@ -267,7 +267,7 @@ describe('app.get("*", handler)', () => {
             const jsonString = JSON.stringify(await response.json());
             expect(jsonString).to.equal(JSON.stringify({ message: "Hello" }));
             expect(response.headers.get("Content-Type")).to.equal(
-                "application/json",
+                "application/json"
             );
         });
     });
@@ -288,7 +288,7 @@ describe('app.get("*", handler)', () => {
 
 // Regular expression as path
 describe("app.get(regex, handler)", () => {
-    const app = new HappyCat();
+    const app = new Worter();
 
     app.get(/\/cat|\/kitten/, (request, response) => {
         return response.json({ message: "Hello" });
@@ -307,7 +307,7 @@ describe("app.get(regex, handler)", () => {
             const jsonString = JSON.stringify(await response.json());
             expect(jsonString).to.equal(JSON.stringify({ message: "Hello" }));
             expect(response.headers.get("Content-Type")).to.equal(
-                "application/json",
+                "application/json"
             );
         });
     });
@@ -325,7 +325,7 @@ describe("app.get(regex, handler)", () => {
             const jsonString = JSON.stringify(await response.json());
             expect(jsonString).to.equal(JSON.stringify({ message: "Hello" }));
             expect(response.headers.get("Content-Type")).to.equal(
-                "application/json",
+                "application/json"
             );
         });
     });

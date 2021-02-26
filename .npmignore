@@ -1,6 +1,8 @@
 # tests directory
 tests/
 dist/tests/
+test.ts
+test*
 
 # docs
 docs/
@@ -11,3 +13,7 @@ docs/
 # All makrdown files
 *.md
 
+# Worker
+worker/
+wrangler*
+webpack*

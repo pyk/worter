@@ -1,11 +1,13 @@
 {
     "name": "worter",
-    "version": "0.0.4",
+    "version": "0.0.6",
     "description": "Build serverless apps on Cloudflare Workers without hassle",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "prepublish": "tsc",
-    "scripts": {},
+    "scripts": {
+        "test": "wrangler publish -e test"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/pyk/worter"
@@ -19,8 +21,18 @@
     "author": "Bayu Aldi Yansyah",
     "license": "MIT",
     "devDependencies": {
-        "@cloudflare/workers-types": "^2.1.0",
-        "typescript": "4.2.2"
+        "@cloudflare/workers-types": "2.1.0",
+        "@cloudflare/wrangler": "1.13.0",
+        "@types/chai": "4.2.15",
+        "@types/mocha": "8.2.1",
+        "@types/sprintf-js": "1.1.2",
+        "chai": "4.3.0",
+        "mocha": "7.2.0",
+        "sprintf-js": "1.1.2",
+        "terser-webpack-plugin": "4.2.3",
+        "ts-loader": "8.0.17",
+        "typescript": "4.2.2",
+        "webpack": "4.43.0"
     },
     "dependencies": {
         "path-to-regexp": "6.2.0"

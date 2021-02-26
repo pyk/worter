@@ -3,3 +3,7 @@ node_modules/
 
 # Build output
 dist/
+
+# Cloudflare worker
+wrangler.toml
+worker/

@@ -1,4 +1,4 @@
-import { HappyCat } from "../index";
+import { Worter } from "../index";
 import { expect } from "chai";
 import { HTTPResponse } from "../index";
 
@@ -7,7 +7,7 @@ import { HTTPResponse } from "../index";
 
 describe("response.body", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.have.property("body");
     });
@@ -15,7 +15,7 @@ describe("response.body", () => {
 
 describe("response.bodyUsed", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.have.property("bodyUsed");
     });
@@ -23,7 +23,7 @@ describe("response.bodyUsed", () => {
 
 describe("response.headers", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.have.property("headers");
     });
@@ -31,7 +31,7 @@ describe("response.headers", () => {
 
 describe("response.ok", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.have.property("ok");
     });
@@ -39,7 +39,7 @@ describe("response.ok", () => {
 
 describe("response.redirected", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.have.property("redirected");
     });
@@ -47,7 +47,7 @@ describe("response.redirected", () => {
 
 describe("response.status", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.have.property("status");
     });
@@ -55,7 +55,7 @@ describe("response.status", () => {
 
 describe("response.url", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.have.property("url");
     });
@@ -63,7 +63,7 @@ describe("response.url", () => {
 
 describe("response.webSocket", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.have.property("webSocket");
     });
@@ -71,7 +71,7 @@ describe("response.webSocket", () => {
 
 describe("response.app", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.have.property("app");
     });
@@ -79,7 +79,7 @@ describe("response.app", () => {
 
 describe("response.clone()", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.respondTo("clone");
     });
@@ -87,7 +87,7 @@ describe("response.clone()", () => {
 
 describe("response.arrayBuffer()", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.respondTo("arrayBuffer");
     });
@@ -95,7 +95,7 @@ describe("response.arrayBuffer()", () => {
 
 describe("response.formData()", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.respondTo("formData");
     });
@@ -103,7 +103,7 @@ describe("response.formData()", () => {
 
 describe("response.json()", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.respondTo("json");
     });
@@ -111,7 +111,7 @@ describe("response.json()", () => {
 
 describe("response.text()", () => {
     it("should exists", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response).to.respondTo("text");
     });
@@ -126,7 +126,7 @@ describe("HTTPResponse.redirect(url, status)", () => {
 
 describe("response.header(key, value)", () => {
     it("should set the response headers properly", () => {
-        const app = new HappyCat();
+        const app = new Worter();
 
         // If header is not exists, then the value should be created
         const response1 = new HTTPResponse(app);
@@ -168,7 +168,7 @@ describe("response.header(key, value)", () => {
 
 describe("response.code(number)", () => {
     it("should set the response status code properly", () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         expect(response.status).to.equal(200);
         expect(response.code(400).status).to.equal(400);
@@ -177,7 +177,7 @@ describe("response.code(number)", () => {
 
 describe("response.html(body)", () => {
     it("should returns new response with specified body & Content-Type header as HTML", async () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         const body = "<html><head></head></html>";
         const htmlResponse = response.html(body);
@@ -185,7 +185,7 @@ describe("response.html(body)", () => {
         // It should returns the copy; not modify the existing response object
         expect(await response.text()).not.to.equal(body);
         expect(response.headers.get("Content-Type")).not.to.equal(
-            "text/html; charset=UTF-8",
+            "text/html; charset=UTF-8"
         );
 
         // It should set the response body correctly
@@ -193,14 +193,14 @@ describe("response.html(body)", () => {
 
         // It should set the content type header correctly
         expect(htmlResponse.headers.get("Content-Type")).to.equal(
-            "text/html; charset=UTF-8",
+            "text/html; charset=UTF-8"
         );
     });
 });
 
 describe("response.json(body)", () => {
     it("should returns new response with specified body & Content-Type header as JSON", async () => {
-        const app = new HappyCat();
+        const app = new Worter();
         const response = new HTTPResponse(app);
         const jsonResponse = response.json({ message: "Hello" });
         const body = '{"message":"Hello"}';
@@ -208,7 +208,7 @@ describe("response.json(body)", () => {
         // It should returns the copy; not modify the existing response object
         expect(await response.text()).not.to.equal(body);
         expect(response.headers.get("Content-Type")).not.to.equal(
-            "application/json",
+            "application/json"
         );
 
         // It should set the response body correctly and existing built-in
@@ -217,7 +217,7 @@ describe("response.json(body)", () => {
 
         // It should set the content type header correctly
         expect(jsonResponse.headers.get("Content-Type")).to.equal(
-            "application/json",
+            "application/json"
         );
     });
 });
