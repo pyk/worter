@@ -5,6 +5,7 @@
 -   [Overview](#overview)
 -   [Request properties](#request-properties)
     -   [request.app](#requestapp)
+    -   [request.headers](#requestheaders)
     -   [request.params](#requestparams)
     -   [request.query](#requestquery)
 -   [Request methods](#request-methods)
@@ -61,6 +62,24 @@ export function logEnv(
     return response;
 }
 ```
+
+[🠕 Go to table of content](#request-object)
+
+### request.headers
+
+This property is a
+[Headers ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers) object
+containing properties mapped to the HTTP request's headers.
+
+For example:
+
+```typescript
+// Content-Type: text/html;
+console.dir(request.headers.get("Content-Type"));
+// => "text/html"
+```
+
+It will returns `null` if the key is not exists.
 
 [🠕 Go to table of content](#request-object)
 
