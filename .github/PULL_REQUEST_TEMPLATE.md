@@ -26,3 +26,11 @@ Thanks again!
 ### What's being changed:
 
 <!-- Share artifacts of the changes, be they code snippets, GIFs or screenshots; whatever shares the most context. -->
+
+### Check off the following:
+
+If you implement new feature:
+
+-   [ ] I have run the project & run the test
+-   [ ] I have wrote the documentation of the new feature
+-   [ ] I hvae wrote unit tests for the new feature
