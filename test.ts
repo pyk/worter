@@ -88,6 +88,11 @@ async function execute(): Promise<Response> {
         // If there is something wrong, then response with the stacktrace.
         return new Response(err.stack || err);
     }
+    if (mochaLogOutput.includes("fail")) {
+        return new Response(mochaLogOutput, {
+            status: 500,
+        });
+    }
     return new Response(mochaLogOutput);
 }
 

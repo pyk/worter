@@ -221,3 +221,19 @@ describe("response.json(body)", () => {
         );
     });
 });
+
+describe("response.send(body)", () => {
+    it("should returns new response with specified body", async () => {
+        const app = new Worter();
+        const response = new HTTPResponse(app);
+        const body = "data";
+        const newResponse = response.send(body);
+
+        // It should returns the copy; not modify the existing response object
+        expect(await response.text()).not.to.equal(body);
+
+        // It should set the response body correctly and existing built-in
+        // method should works
+        expect(await newResponse.text()).to.eql(body);
+    });
+});

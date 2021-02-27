@@ -146,7 +146,8 @@ export class HTTPResponse extends Response {
         return response;
     }
 
-    // Returns HTML response. Please note that this method returns the copy
+    // Returns HTML response.
+    // Please note that this method returns the copy
     // of existing response object with the specified response body and add
     // content type header as HTML, it doesn't modify the existing response
     // object.
@@ -184,6 +185,32 @@ export class HTTPResponse extends Response {
         }
         // If there is no body provided, then return Response.json()
         return super.json();
+    }
+
+    // Sets the body for the response.
+    // We cannot override the Response.body property to a function.
+    // Read more: https://stackoverflow.com/a/38860482
+    //
+    // Please note that this method returns the copy
+    // of existing response object with the specified response body,
+    // it doesn't modify the existing response object.
+    public send(
+        body:
+            | string
+            | Blob
+            | ArrayBufferView
+            | ArrayBuffer
+            | FormData
+            | URLSearchParams
+            | ReadableStream<Uint8Array>
+            | null
+    ): HTTPResponse {
+        const response = new HTTPResponse(this.app, body, {
+            status: this.status,
+            statusText: this.statusText,
+            headers: this.headers,
+        });
+        return response;
     }
 }
 

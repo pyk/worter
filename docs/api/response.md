@@ -10,9 +10,7 @@
     -   [response.header](#responseheader)
     -   [response.html](#responsehtml)
     -   [response.json](#responsejson)
--   [Examples](#examples)
-    -   [Path examples](#path-examples)
-    -   [Handler function examples](#handler-function-examples)
+    -   [response.send](#responsesend)
 -   [Credits](#credits)
 
 ## Overview
@@ -116,6 +114,39 @@ number, or null.
 response.json(null);
 
 response.json({ message: "This is a Cat 🐈" });
+```
+
+[🠕 Go to table of content](#table-of-content)
+
+### response.send
+
+This method returns a copy of response object with specified body.
+
+The `body` parameter can be a string,
+[Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob),
+[ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+or
+[ReadableStream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+
+For example:
+
+```typescript
+response.send("hello there");
+response.send(
+    new Blob([JSON.stringify(obj, null, 2)], { type: "application/json" })
+);
+```
+
+This method doesn't automatically assigns the `Content-Length` or `Content-Type`
+HTTP response header field. So you need to set the header manually using
+`response.header`.
+
+```typescript
+const text = "hello there";
+response.send(text).headers({
+    "Content-Type": "text/plain",
+    "Content-Length": text.length,
+});
 ```
 
 [🠕 Go to table of content](#table-of-content)
