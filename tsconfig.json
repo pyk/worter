@@ -10,8 +10,9 @@
         "moduleResolution": "node",
         "sourceMap": true,
         "esModuleInterop": true,
-        "types": ["@cloudflare/workers-types"]
+        "types": ["@cloudflare/workers-types"],
+        "skipLibCheck": true
     },
-    "include": ["./*.ts", "./**/*.ts"],
-    "exclude": ["./node_modules/", "dist/"]
+    "include": ["index.ts"],
+    "exclude": []
 }

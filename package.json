@@ -1,11 +1,11 @@
 {
     "name": "worter",
-    "version": "0.0.8",
-    "description": "Build serverless apps on Cloudflare Workers without hassle",
+    "version": "0.0.9",
+    "description": "Build Cloudflare Workers without hassle",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "prepublish": "tsc",
     "scripts": {
+        "prepublishOnly": "tsc",
         "test": "wrangler publish -e test"
     },
     "repository": {
