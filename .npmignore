@@ -17,3 +17,10 @@ docs/
 worker/
 wrangler*
 webpack*
+dist/worker*
+
+# Github
+.github/*
+
+# Prettier
+.prettier*
